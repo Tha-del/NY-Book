@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คำอวยพรปีใหม่ 2569 ให้ณิชนันทน์ ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&family=Mali:wght@400;600&display=swap');
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:url('https://thumbs.dreamstime.com/b/vibrant-pastel-fireworks-illuminate-soft-dreamy-twilight-sky-whimsical-floating-orbs-delicate-clouds-enhance-magical-417856833.jpg') no-repeat center fixed;
+    background-size:cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Mali','Kanit',sans-serif;
+    overflow:hidden;
+    position:relative;
+}
+body::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.3);
+    z-index:1;
+}
+
+/* Sparkles */
+.sparkle{
+    position:absolute;
+    color:#fff;
+    pointer-events:none;
+    opacity:.9;
+    animation:sparkle-fall linear infinite;
+    z-index:3;
+}
+@keyframes sparkle-fall{
+    from{transform:translateY(-100vh) rotate(0);opacity:1;}
+    to{transform:translateY(100vh) rotate(360deg);opacity:0;}
+}
+
+/* Book */
+.book-container{
+    perspective:1600px;
+    width:90vw;
+    max-width:650px;
+    height:75vh;
+    max-height:850px;
+    z-index:2;
+}
+.book{
+    position:relative;
+    width:100%;
+    height:100%;
+    transform-style:preserve-3d;
+    cursor:pointer;
+}
+
+/* Shared */
+.cover,.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:10px 25px 25px 10px;
+    box-shadow:0 20px 40px rgba(0,0,0,.5);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+    box-sizing:border-box;
+    text-align:center;
+    backface-visibility:hidden;
+}
+
+/* Cover */
+.cover{
+    background:linear-gradient(to right,#ffb6c1,#ff69b4,#87ceeb);
+    color:#fff;
+    z-index:4;
+    transform-origin:left center;
+    transition:transform 1.8s cubic-bezier(.65,0,.35,1);
+}
+.book.open .cover{
+    transform:rotateY(-160deg);
+}
+.cover h1{font-size:4em;text-shadow:4px 4px 15px rgba(0,0,0,.4);}
+.cover p{font-size:2em;}
+
+/* Pages */
+.page{
+    background:url('https://thumbs.dreamstime.com/b/cheerful-illustration-multiple-pastel-colored-fireworks-exploding-against-soft-gradient-sky-fluffy-light-clouds-frame-417856853.jpg') no-repeat center;
+    background-size:cover;
+    color:#333;
+    opacity:0;
+    transition:opacity .6s ease;
+}
+.page::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.75);
+    border-radius:10px 25px 25px 10px;
+}
+.page-content{position:relative;z-index:1;}
+
+.page h2{color:#ff1493;font-size:3em;}
+.page h3{color:#4169e1;font-size:2.4em;margin:15px 0;}
+.page p{font-size:1.6em;line-height:1.9;}
+
+.book.step-1 .page-2025{opacity:1;z-index:2;}
+.book.step-2 .page-2026{opacity:1;z-index:2;}
+
+.decor{
+    font-size:4.5em;
+    margin:30px 0;
+    animation:bounce 2s infinite;
+}
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+
+/* Secret Heart */
+#secret-heart{
+    position:fixed;
+    bottom:16px;
+    right:16px;
+    font-size:2.2em;
+    cursor:pointer;
+    z-index:30;
+    opacity:.85;
+    transition:transform .3s;
+}
+#secret-heart:active{
+    transform:scale(1.2);
+}
+
+/* Secret Overlay */
+#secret-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(255,255,255,.4);
+    backdrop-filter:blur(6px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .5s ease;
+    z-index:40;
+}
+#secret-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* Secret Note */
+#secret-note{
+    background:#fffdf8;
+    border-radius:20px;
+    padding:32px 28px;
+    max-width:520px;
+    width:88%;
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+    text-align:center;
+    transform:translateY(40px);
+    opacity:0;
+    transition:.6s ease;
+}
+#secret-overlay.show #secret-note{
+    transform:translateY(0);
+    opacity:1;
+}
+#secret-note h3{
+    margin-top:0;
+    color:#ff69b4;
+    font-size:1.7em;
+}
+#secret-note p{
+    font-size:1.35em;
+    line-height:1.9;
+    color:#444;
+}
+
+/* Close */
+#close-secret{
+    position:absolute;
+    top:14px;
+    right:18px;
+    font-size:1.5em;
+    cursor:pointer;
+    color:#999;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .cover h1{font-size:2.8em}
+    .cover p{font-size:1.4em}
+    .page h2{font-size:2.3em}
+    .page h3{font-size:2em}
+    .page p{font-size:1.25em}
+    #secret-note p{font-size:1.15em}
+}
+</style>
+</head>
+
+<body>
+
+<div class="book-container">
+<div class="book" id="book">
+
+<div class="cover">
+    <div class="decor">✨🎉💖🎆</div>
+    <h1>Happy New Year</h1>
+    <p>แตะเพื่อเปิดเรื่องราว ♡</p>
+    <div class="decor">🥂🎊✨🎇</div>
+</div>
+
+<div class="page page-2025">
+<div class="page-content">
+    <h2>บทหนึ่งของปี 2025</h2>
+    <p>
+    “เหมือนหนังสือเล่มหนึ่งถ้าใครได้อ่าน<br>
+    ที่เริ่มเรื่องเชื่องหวานได้อ่านก็ยิ้มเรื่อยไป”<br><br>
+    เจ้ครับ ปีที่แล้วทั้งปีมันอาจจะแย่ทั้งปี<br>
+    มีสุขนิดๆ มีทุกข์เยอะหน่อย<br><br>
+    แต่ผมก็ดีใจนะที่ทำให้เรารู้จักกันมากขึ้น<br>
+    ขอบคุณสำหรับโอกาสที่ทำให้ผมได้ดูแลความรู้สึกเจ้<br>
+    จนกลายเป็นพี่น้องนะครับ
+    </p>
+    <div class="decor">📖✨</div>
+</div>
+</div>
+
+<div class="page page-2026">
+<div class="page-content">
+    <h2>สวัสดีปีใหม่ 2569 ♡</h2>
+    <h3>แด่ณิชนันทน์</h3>
+    <p>
+    ขอให้ปีใหม่นี้เต็มไปด้วยความสุข ความสำเร็จ<br>
+    สุขภาพแข็งแรง และความรักนะครับ<br>
+    ขอสิ่งดีๆ เข้ามาในชีวิต มีเงินมีทองใช้ไม่ขาดมือ 💰✨<br>
+    ครอบครัวร่มเย็นเป็นสุข<br>
+    คุณพ่อคุณแม่สุขภาพแข็งแรง
+    </p>
+    <p>จากใจ... เราสองสามคน 🌸💕</p>
+    <div class="decor">🎁🎉💖</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Secret Elements -->
+<div id="secret-heart">💖</div>
+
+<div id="secret-overlay">
+<div id="secret-note">
+<span id="close-secret">×</span>
+<h3>บันทึกจากคนเขียน</h3>
+<p>
+หนังสือเล่มนี้ไม่ได้ตั้งใจให้สมบูรณ์<br>
+และจะไม่มีวันสมบูรณ์<br><br>
+เจ้ยังสามารถทำให้มันดีขึ้นในทุกๆ วัน<br><br>
+ขอบคุณนะ<br>
+ที่ให้พวกเราอยู่ในเรื่องนี้<br>
+เป็นส่วนหนึ่งของความสมบูรณ์
+</p>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+const book=document.getElementById('book');
+let step=0;
+
+book.addEventListener('click',()=>{
+    step=(step+1)%3;
+    book.className='book';
+    if(step===1) book.classList.add('open','step-1');
+    if(step===2){
+        book.classList.add('open','step-2');
+        confetti({particleCount:180,spread:90,origin:{y:.6}});
+    }
+});
+
+/* Sparkles */
+function sparkle(){
+    const s=document.createElement('div');
+    s.className='sparkle';
+    s.innerHTML=['♡','✨','⭐','💖','🌟','🎆','🌸'][Math.floor(Math.random()*7)];
+    s.style.left=Math.random()*100+'vw';
+    s.style.fontSize=Math.random()*1.4+1.4+'em';
+    s.style.animationDuration=Math.random()*3+4+'s';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),10000);
+}
+setInterval(sparkle,300);
+
+/* Secret Heart Logic */
+const heart=document.getElementById('secret-heart');
+const overlay=document.getElementById('secret-overlay');
+const closeBtn=document.getElementById('close-secret');
+let timer;
+
+function startPress(){
+    timer=setTimeout(()=>overlay.classList.add('show'),2000);
+}
+function cancelPress(){
+    clearTimeout(timer);
+}
+
+heart.addEventListener('mousedown',startPress);
+heart.addEventListener('touchstart',startPress);
+heart.addEventListener('mouseup',cancelPress);
+heart.addEventListener('mouseleave',cancelPress);
+heart.addEventListener('touchend',cancelPress);
+
+closeBtn.addEventListener('click',()=>overlay.classList.remove('show'));
+</script>
+
+</body>
+</html>
